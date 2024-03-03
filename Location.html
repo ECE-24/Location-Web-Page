@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Current location</title>
+
+    <script>
+        function showLocation() {
+            if(navigator.geolocation){
+                navigator.geolocation.getCurrentPosition(showPosition)
+            }else{
+                let result = document.getElementById('show');
+                result.innerHTML = "Gio location al is not Supported"
+            }
+            
+        }
+
+        function showPosition(position) {
+            console.log('My Latutude', position.coords.latitude)
+            console.log('My Longitude', position.coords.longitude)
+            let result = document.getElementById('show');
+            result.innerHTML = "Latitude: " + position.coords.latitude + "<br> Longitude " +  position.coords.longitude
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Get My Curent Location</h1>
+    <p id="show"> Your location is .......</p>
+    <button onclick="showLocation()">Get Location</button>
+</body>
+
+</html>
